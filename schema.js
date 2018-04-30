@@ -19,6 +19,10 @@ const BookType = new GraphQLObjectType({
     releaseYear: {
       type: GraphQLString,
       resolve: xml => xml.publication_year[0]
+    },
+    pageAmount: {
+      type: GraphQLInt,
+      resolve: xml => xml.num_pages[0]
     }
   })
 })
@@ -40,6 +44,14 @@ const AuthorType = new GraphQLObjectType({
     fanAmount: {
       type: GraphQLInt,
       resolve: (xml) => xml.GoodreadsResponse.author[0].fans_count[0]._
+    },
+    gender: {
+      type: GraphQLString,
+      resolve: xml => xml.GoodreadsResponse.author[0].gender[0]
+    },
+    hometown: {
+      type: GraphQLString,
+      resolve: xml => xml.GoodreadsResponse.author[0].hometown[0]
     }
   })
 })
